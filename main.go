@@ -22,8 +22,6 @@ var (
 //	ec2Svc *ec2.EC2
 	elbSvc *elbv2.ELBV2
 	rdsSvc *rds.RDS
-//	stsSvc *sts.STS
-//	elcSvc *elasticache.ElastiCache
 )
 
 func main() {
@@ -36,8 +34,6 @@ func main() {
 		//ec2Svc = ec2.New(sess)
 		elbSvc = elbv2.New(sess)
 		rdsSvc = rds.New(sess)
-		//stsSvc = sts.New(sess)
-		//elcSvc = elasticache.New(sess)
 
 	// You can scan multiple regions at once, or just pass a single region for speed
 	// targetRegions := []string{"us-east-1", "us-west-1", "us-west-2"}
@@ -112,8 +108,6 @@ func main() {
 	// 4- Delete all the RDS instances
 	StopRds()
 }
-
-
 
 func StopRds() {
 	fmt.Println("Searching for RDS Instances")

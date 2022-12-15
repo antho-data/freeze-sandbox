@@ -3,7 +3,11 @@ module example.com/m
 go 1.19
 
 require (
-	github.com/aws/aws-sdk-go v1.44.136 // indirect
+	github.com/aws/aws-sdk-go v1.44.136
+	github.com/gruntwork-io/cloud-nuke v0.21.0
+)
+
+require (
 	github.com/aws/aws-sdk-go-v2 v1.16.11 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.17.1 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.12.14 // indirect
@@ -19,7 +23,6 @@ require (
 	github.com/aws/smithy-go v1.12.1 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
 	github.com/go-errors/errors v1.0.2-0.20180813162953-d98b870cc4e0 // indirect
-	github.com/gruntwork-io/cloud-nuke v0.21.0 // indirect
 	github.com/gruntwork-io/go-commons v0.8.2 // indirect
 	github.com/gruntwork-io/gruntwork-cli v0.7.0 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
