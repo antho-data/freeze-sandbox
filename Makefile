@@ -6,7 +6,7 @@
 build:
 	export GO111MODULE="on"
 	go get -v
-	env GOOS=linux go build -ldflags="-s -w"  -o bin/freeze-sandbox main.go
+	go build -o bin/main main.go
 clean:
 	rm -rf ./bin
 test:
