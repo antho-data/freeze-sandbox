@@ -37,7 +37,7 @@ func main() {
 
 	// You can scan multiple regions at once, or just pass a single region for speed
 	// targetRegions := []string{"us-east-1", "us-west-1", "us-west-2"}
-	targetRegions := []string{"us-west-1", "eu-west-1"}
+	targetRegions := []string{"eu-west-3", "eu-west-1"}
 
 	excludeRegions := []string{}
 	// You can simultaneously target multiple resource types as well
