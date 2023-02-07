@@ -77,17 +77,17 @@ func main() {
 	}
 
 	// You can call GetRegion to examine a single region's resources
-	usWest1Resources := accountResources.GetRegion("eu-west-1")
+	euWest3Resources := accountResources.GetRegion("eu-west-3")
 
 	// Then interrogate them with the new methods:
 
 	// Count the number of any resource type within the region
-	countOfEc2InUsWest1 := euWest3Resources.CountOfResourceType("ec2")
+	countOfEc2InEuWest3 := euWest3Resources.CountOfResourceType("ec2")
 
-	fmt.Printf("countOfEc2InUsWest1: %d\n", countOfEc2InUsWest1)
+	fmt.Printf("countOfEc2InEuWest3: %d\n", countOfEc2InEuWest3)
 
-	fmt.Printf("usWest1Resources.ResourceTypePresent(\"ec2\"):%b\n", usWest1Resources.ResourceTypePresent("ec2"))
-	// usWest1Resources.ResourceTypePresent("ec2"): true
+	fmt.Printf("euWest3Resources.ResourceTypePresent(\"ec2\"):%b\n", euWest3Resources.ResourceTypePresent("ec2"))
+	// euWest3Resources.ResourceTypePresent("ec2"): true
 
 	// Get all the resource identifiers for a given resource type
 	// First: we're only looking for ec2 instances
