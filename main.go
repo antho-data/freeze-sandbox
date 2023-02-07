@@ -82,7 +82,7 @@ func main() {
 	// Then interrogate them with the new methods:
 
 	// Count the number of any resource type within the region
-	countOfEc2InUsWest1 := usWest1Resources.CountOfResourceType("ec2")
+	countOfEc2InUsWest1 := euWest3Resources.CountOfResourceType("ec2")
 
 	fmt.Printf("countOfEc2InUsWest1: %d\n", countOfEc2InUsWest1)
 
@@ -91,7 +91,7 @@ func main() {
 
 	// Get all the resource identifiers for a given resource type
 	// First: we're only looking for ec2 instances
-	resourceIds := usWest1Resources.IdentifiersForResourceType("ec2")
+	resourceIds := euWest3Resources.IdentifiersForResourceType("ec2")
 	// fmt.Printf("resourceIds: %s", resourceIds)
 	// resourceIds:  [i-0c5d16c3ef28dda24 i-09d9739e1f4d27814]
 	for _, value := range resourceIds {
