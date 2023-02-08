@@ -19,7 +19,7 @@ import (
 )
 
 var (
-//	ec2Svc *ec2.EC2
+	//	ec2Svc *ec2.EC2
 	elbSvc *elbv2.ELBV2
 	rdsSvc *rds.RDS
 )
@@ -29,15 +29,15 @@ func main() {
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		SharedConfigState: session.SharedConfigEnable,
 	}))
-	
+
 	// Services
-		//ec2Svc = ec2.New(sess)
-		elbSvc = elbv2.New(sess)
-		rdsSvc = rds.New(sess)
+	//ec2Svc = ec2.New(sess)
+	elbSvc = elbv2.New(sess)
+	rdsSvc = rds.New(sess)
 
 	// You can scan multiple regions at once, or just pass a single region for speed
 	// targetRegions := []string{"us-east-1", "us-west-1", "us-west-2"}
-	targetRegions := []string{"eu-west-3", "us-east-1"}
+	targetRegions := []string{"eu-west-3"}
 
 	excludeRegions := []string{}
 	// You can simultaneously target multiple resource types as well
@@ -84,10 +84,10 @@ func main() {
 	// Count the number of any resource type within the region
 	countOfEc2InEuWest3 := euWest3Resources.CountOfResourceType("ec2")
 
-	fmt.Printf("countOfEc2InEuWest3: %d\n", countOfEc2InEuWest3)
+	fmt.Printf("countOfEc2InUsWest1: %d\n", countOfEc2InEuWest3)
 
-	fmt.Printf("euWest3Resources.ResourceTypePresent(\"ec2\"):%b\n", euWest3Resources.ResourceTypePresent("ec2"))
-	// euWest3Resources.ResourceTypePresent("ec2"): true
+	//fmt.Printf("euWest3Resources.ResourceTypePresent(\"ec2\"):%b\n", euWest3Resources.ResourceTypePresent("ec2"))
+	// usWest1Resources.ResourceTypePresent("ec2"): true
 
 	// Get all the resource identifiers for a given resource type
 	// First: we're only looking for ec2 instances
@@ -99,11 +99,11 @@ func main() {
 		//FreezeEC2(&value)
 	}
 
-    // 2-  We're releasing all the EIPs
-	//ec2ReleaseAddresses()
+	// 2-  We're releasing all the EIPs
+	ec2ReleaseAddresses()
 
 	// 3- Load Balancers
-	// StopAlb()
+	StopAlb()
 
 	// 4- Delete all the RDS instances
 	StopRds()
@@ -169,7 +169,7 @@ func stopRDSInstances(instances []*string) {
 			DBInstanceIdentifier: instance,
 			SkipFinalSnapshot:    aws.Bool(true),
 		}
-		     
+
 		_, err := rdsSvc.DeleteDBInstance(params)
 
 		if err != nil {
@@ -235,8 +235,8 @@ func terminateLoadBalancers(instances []*string) {
 		fmt.Println("- Terminating Load Balancer: ", params)
 		_, err := elbSvc.DeleteLoadBalancer(params)
 
-	 	if err != nil {
-	 		fmt.Printf("Failed to terminate lb", err)
+		if err != nil {
+			fmt.Printf("Failed to terminate lb", err)
 		}
 
 	}
