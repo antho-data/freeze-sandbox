@@ -15,6 +15,5 @@ jobs:
           go-version: 1.19
 
       - name: Build
-        run: 	export GO111MODULE="on"
-	      run: 	go get -v
-	      run: 	go build -o bin/main main.go
+        run: 	go get -v
+        run: 	go build -o bin/main main.go
